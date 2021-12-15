@@ -92,14 +92,14 @@ public class OrderService {
     
     public List<Order> getByDateAndUserId(String date , int id) {
         
-        try {
+       // try {
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            Date fecha = formato.parse(date);
+           // Date fecha = formato.parse(date);
             
-            return orderRepository.getByDateAndUserId(fecha, id);
-        } catch (ParseException ex) {
-            Logger.getLogger(OrderService.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
+            return orderRepository.getByDateAndUserId(date, id);
+      //  } //catch (ParseException ex) {
+           // Logger.getLogger(OrderService.class.getName()).log(Level.SEVERE, null, ex);
+           // return null;
+       //}
     }
 }

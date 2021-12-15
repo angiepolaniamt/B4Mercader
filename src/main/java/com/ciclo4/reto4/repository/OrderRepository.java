@@ -59,7 +59,7 @@ public class OrderRepository {
         return orderCrudRepository.findByStatusAndUserId(status, id);
     }
     
-    public List<Order> getByDateAndUserId(Date date , int id){
-        return orderCrudRepository.findByDateAndUserId(date, id);
+    public List<Order> getByDateAndUserId(String date , int id){
+        return orderCrudRepository.findByRegisterDayContainsAndSalesManId(date, id);
     }
 }

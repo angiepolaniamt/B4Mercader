@@ -30,8 +30,8 @@ public interface OrderCrudRepository extends MongoRepository <Order, Integer>{
     @Query("{'status' : ?0 , 'salesMan.id' : ?1} ")
     List<Order> findByStatusAndUserId(final String status , final int id);
     
-    @Query("{'registerDay' : ?0 , 'salesMan.id' : ?1}")
-    List<Order> findByDateAndUserId(final Date date , final int id);
+    //@Query("{'registerDay' : ?0 , 'salesMan.id' : ?1}")
+    List<Order> findByRegisterDayContainsAndSalesManId(String registerDay, Integer id);
     
     //Para seleccionar la orden con el id maximo
     Optional<Order> findTopByOrderByIdDesc();

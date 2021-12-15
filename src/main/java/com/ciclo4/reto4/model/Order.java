@@ -28,7 +28,8 @@ public class Order {
     
     @Id
     private Integer id;
-    private Date registerDay;
+    private String registerDay;
+    //private Date registerDay;
     private String status;
     private User salesMan;
     
