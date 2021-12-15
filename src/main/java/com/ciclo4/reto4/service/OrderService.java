@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -88,11 +90,16 @@ public class OrderService {
         return orderRepository.getByStatusAndUserId(status, id);
     }
     
-    public List<Order> getByDateAndUserId(String date , int id) throws ParseException{
+    public List<Order> getByDateAndUserId(String date , int id) {
         
-       SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-       Date fecha = formato.parse(date);
-       
-       return orderRepository.getByDateAndUserId(fecha, id);
+        try {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            Date fecha = formato.parse(date);
+            
+            return orderRepository.getByDateAndUserId(fecha, id);
+        } catch (ParseException ex) {
+            Logger.getLogger(OrderService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 }

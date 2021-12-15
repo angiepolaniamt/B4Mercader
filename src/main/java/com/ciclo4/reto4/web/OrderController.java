@@ -80,7 +80,7 @@ public class OrderController {
     }
     
     @GetMapping("/date/{date}/{id}")
-    public List<Order> getOrderByDateAndUserId(@PathVariable("date") String date , @PathVariable("id") int id) throws ParseException{
+    public List<Order> getOrderByDateAndUserId(@PathVariable("date") String date , @PathVariable("id") int id) {
         return orderService.getByDateAndUserId(date, id);
     }
     
